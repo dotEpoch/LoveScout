@@ -5,29 +5,64 @@ WindowManager:
 
 <MainWindow>
     name: "homepage"
-       
-    FloatLayout:
+    
+    canvas.before:
+        Color:
+            rgba: (0.969,0.839,0.965,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+              
+    BoxLayout:
+        orientation: "vertical"
         size: root.width, root.height
+        padding: 50
+        spacing: 20
+        
+        Label:
+            text: 'Click to begin your adventure!'
+            color: (0.957,0,1,1)
+            background_color: (0.957,0,1,1)
+            font_size: 32
+            size: 0.3,0.3
+            #pos_hint:{'top':1}
             
         Button:
             font_size: 24
-            size_hint: (0.3,0.3)
-            text: 'Click to begin your adventure!'
-            background_color: (1,0,0.592,1)
-            pos_hint:{'x':.35, 'y':.35}
+            size_hint: (0.15,0.12)
+            background_color: (0.969,0.839,0.965,0)           
+            pos_hint:{'center_x':.5}
             on_release: app.root.current = "hunt"
+            
+            Image: 
+                source: 'heartbutton.jpg'
+                #size: self.parent.size
+                #allow_stretch: True
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+            
 
 <SecondWindow>
     name: "hunt"
     id: mywidget
+    
+    canvas.before:
+        Color:
+            rgba: (0.969,0.839,0.965,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
        
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
+        #color: (0.957,0,1,1)
     
         Label:
             id: prompt
+            color: (0.957,0,1,1)
             text: "Mission1: Take a picture together!"
+            
             
         Image:
             id: my_image
@@ -35,6 +70,7 @@ WindowManager:
     
         FileChooserIconView:
             id: treasure
+            color: (0.957,0,1,1)
             on_selection: mywidget.submission(treasure.selection)
         
 <ThirdWindow>
@@ -42,9 +78,12 @@ WindowManager:
     
     BoxLayout:
         orientation: "vertical"
+        #color: (0.957,0,1,1)
         size: root.width, root.height
         
         Label:
             text: "Hope you enjoyed!"
+            color: (0.957,0,1,1)
+            font_name: "Comic"
 
 
