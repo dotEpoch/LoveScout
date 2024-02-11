@@ -1,0 +1,50 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>
+    name: "homepage"
+       
+    FloatLayout:
+        size: root.width, root.height
+            
+        Button:
+            font_size: 24
+            size_hint: (0.3,0.3)
+            text: 'Click to begin your adventure!'
+            background_color: (1,0,0.592,1)
+            pos_hint:{'x':.35, 'y':.35}
+            on_release: app.root.current = "hunt"
+
+<SecondWindow>
+    name: "hunt"
+    id: mywidget
+       
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+    
+        Label:
+            id: prompt
+            text: "Mission1: Take a picture together!"
+            
+        Image:
+            id: my_image
+            source: ''
+    
+        FileChooserIconView:
+            id: treasure
+            on_selection: mywidget.submission(treasure.selection)
+        
+<ThirdWindow>
+    name: "end"
+    
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        
+        Label:
+            text: "Hope you enjoyed!"
+
+
